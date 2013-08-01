@@ -1,12 +1,12 @@
-# BootstrapHelpers
+# BootstrapHelp
 
-TODO: Write a gem description
+Bootstrap Help is a collection of Rails Helper methods that help build Bootstrap's HTML components.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'bootstrap_helpers'
+    gem 'bootstrap_help'
 
 And then execute:
 
@@ -14,11 +14,23 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install bootstrap_helpers
+    $ gem install bootstrap_help
 
 ## Usage
 
-TODO: Write usage instructions here
+### Nav Helper
+
+The Nav Helper helps you quickly build a fixed navigation bar in Bootstrap. For example:
+
+`
+= main_nav(brand: "My Awesome Company") do
+  = dropdown_menu "My Menu" do
+    = dropdown_item "Link1", "#"
+    = dropdown_item "Link2", "#"
+    = dropdown_item "Link3", "#"
+    = dropdown_divider
+    = dropdown_item "Link4", "#"
+`
 
 ## Contributing
 

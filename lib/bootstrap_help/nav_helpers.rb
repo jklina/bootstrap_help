@@ -1,4 +1,4 @@
-module BootstrapHelpers
+module BootstrapHelp
   module NavHelpers
     include ActionView::Helpers::TagHelper
     include ActionView::Helpers::TextHelper

@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'bootstrap_helpers/version'
+require 'bootstrap_help/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "bootstrap_helpers"
-  spec.version       = BootstrapHelpers::VERSION
+  spec.name          = "bootstrap_help"
+  spec.version       = BootstrapHelp::VERSION
   spec.authors       = ["Josh Klina"]
   spec.email         = ["joshua.klina@gmail.com"]
   spec.description   = %q{Helper methods for generating Twitter Bootstrap markup}

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 
-describe BootstrapHelpers::NavHelpers do
+describe BootstrapHelp::NavHelpers do
   let(:helpers) do
     class HelpersClass
-      include BootstrapHelpers::NavHelpers
+      include BootstrapHelp::NavHelpers
     end
     HelpersClass.new
   end

@@ -1,1 +1,1 @@
-require 'bootstrap_helpers'
+require 'bootstrap_help'

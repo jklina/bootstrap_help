@@ -1,6 +1,6 @@
-module BootstrapHelpers
+module BootstrapHelp
   class Railtie < Rails::Railtie
-    initializer "bootstrap_helpers.nav_helpers" do
+    initializer "bootstrap_help.nav_helpers" do
       ActionView::Base.send :include, NavHelpers
     end
   end
