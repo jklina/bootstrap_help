@@ -15,10 +15,22 @@ module BootstrapHelp
             concat(responsive_menu_variation)
             concat(link_to(brand, brand_path, class: 'brand'))
             if block_given?
-              concat(content_tag(:div, class: 'nav') { yield })
+              concat(yield)
             end
           end
         end
+      end
+    end
+
+    def left
+      if block_given?
+        content_tag(:div, class: 'nav') { yield }
+      end
+    end
+
+    def right
+      if block_given?
+        content_tag(:div, class: 'nav pull-right') { yield }
       end
     end
 
@@ -32,8 +44,8 @@ module BootstrapHelp
     end
 
 
-    def dropdown_item(value, url)
-      content_tag(:li, link_to(value, url))
+    def menu_link_to(value, url, args=nil)
+      content_tag(:li, link_to(value, url, args))
     end
 
     def dropdown_divider

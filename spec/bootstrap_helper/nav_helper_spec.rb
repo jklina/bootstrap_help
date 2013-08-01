@@ -25,8 +25,22 @@ describe BootstrapHelp::NavHelpers do
     end
 
     it 'returns a bootstrap top nav bar' do
-      result = "<div class=\"navbar navbar-fixed-top navbar-inverse\"><div class=\"navbar-inner\"><div class=\"container-fluid\"><button class=\"btn btn-navbar\" data-target=\".nav-collapse\" data-toggle=\"collapse\"><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button><a class=\"brand\" href=\"/\">Brand</a><div class=\"nav\">block content</div></div></div></div>"
+      result = "<div class=\"navbar navbar-fixed-top navbar-inverse\"><div class=\"navbar-inner\"><div class=\"container-fluid\"><button class=\"btn btn-navbar\" data-target=\".nav-collapse\" data-toggle=\"collapse\"><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button><a class=\"brand\" href=\"/\">Brand</a>block content</div></div></div>"
       expect(helpers.main_nav(brand: 'Brand', &block)).to eq(result)
+    end
+  end
+
+  describe '#left' do
+    it 'returns html that wraps items on the left side of the nav' do
+      result = "<div class=\"nav\">block content</div>"
+      expect(helpers.left(&block)).to eq(result)
+    end
+  end
+
+  describe '#right' do
+    it 'returns html that wraps items on the right side of the nav' do
+      result = "<div class=\"nav pull-right\">block content</div>"
+      expect(helpers.right(&block)).to eq(result)
     end
   end
 
@@ -37,15 +51,22 @@ describe BootstrapHelp::NavHelpers do
     end
   end
 
-  describe '#dropdown_item' do
-    it 'returns a bootstrap dropdown item with the provided value and url' do
+  describe '#menu_link_to' do
+    it 'returns a bootstrap menu link with the provided value and url' do
       result = "<li><a href=\"#\">test</a></li>"
-      expect(helpers.dropdown_item('test', '#')).to eq(result)
+      expect(helpers.menu_link_to('test', '#')).to eq(result)
     end
   end
 
   describe '#dropdown_divider' do
     it 'returns a bootstrap dropdown menu divider' do
+      result = "<li class=\"divider\"></li>"
+      expect(helpers.dropdown_divider).to eq(result)
+    end
+  end
+
+  describe '#left' do
+    it 'returns markup to align links to the left' do
       result = "<li class=\"divider\"></li>"
       expect(helpers.dropdown_divider).to eq(result)
     end
