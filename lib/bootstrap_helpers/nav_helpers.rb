@@ -10,11 +10,11 @@ module BootstrapHelpers
 
       content_tag :div, class: 'navbar navbar-fixed-top navbar-inverse' do
         content_tag :div, class: 'navbar-inner' do
-          content_tag :div, class: 'container' do
+          content_tag :div, class: 'container-fluid' do
             concat(responsive_menu_variation)
             concat(content_tag(:a, brand, href: brand_path, class: 'brand'))
             if block_given?
-              concat(content_tag :div, yield, class: 'nav-collapse')
+              concat(content_tag(:div, class: 'nav') { yield })
             end
           end
         end
