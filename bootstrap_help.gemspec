@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["joshua.klina@gmail.com"]
   spec.description   = %q{Helper methods for generating Twitter Bootstrap markup}
   spec.summary       = %q{Twitter Bootstrap makeup generators}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/jklina/bootstrap_help"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
