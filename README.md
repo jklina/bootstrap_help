@@ -22,7 +22,7 @@ Or install it yourself as:
 
 The Nav Helper helps you quickly build a fixed navigation bar in Bootstrap. For example:
 
-`
+```haml
 = main_nav(brand: "My Awesome Company") do
   = left do
     = dropdown_menu "My Menu" do
@@ -33,7 +33,7 @@ The Nav Helper helps you quickly build a fixed navigation bar in Bootstrap. For 
       = menu_link_to "Link4", "#"
   = right do
       = menu_link_to "Sign In", "#"
-`
+```
 
 ## Contributing
 
