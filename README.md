@@ -35,6 +35,16 @@ The Nav Helper helps you quickly build a fixed navigation bar in Bootstrap. For 
       = menu_link_to "Sign In", "#"
 ```
 
+### Table Helper
+
+The Table Helper helps you quickly build Bootstrap tables with collections of instances. For example:
+
+```haml
+= table_for(@apples) do
+  = column :color
+  = column 'Type of Apple', :type
+```
+
 ## Contributing
 
 1. Fork it
