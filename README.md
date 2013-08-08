@@ -24,15 +24,15 @@ The Nav Helper helps you quickly build a fixed navigation bar in Bootstrap. For 
 
 ```haml
 = main_nav(brand: "My Awesome Company") do
-  = left do
-    = dropdown_menu "My Menu" do
-      = menu_link_to "Link1", "#"
-      = menu_link_to "Link2", "#"
-      = menu_link_to "Link3", "#"
-      = dropdown_divider
-      = menu_link_to "Link4", "#"
-  = right do
-      = menu_link_to "Sign In", "#"
+  - left do
+    - dropdown_menu "My Menu" do
+      - menu_link_to "Link1", "#"
+      - menu_link_to "Link2", "#"
+      - menu_link_to "Link3", "#"
+      - dropdown_divider
+      - menu_link_to "Link4", "#"
+  - right do
+      - menu_link_to "Sign In", "#"
 ```
 
 ### Table Helper

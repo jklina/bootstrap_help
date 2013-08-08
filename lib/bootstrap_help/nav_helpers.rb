@@ -36,7 +36,6 @@ module BootstrapHelp
 
     #Dropdown Menus
     def dropdown_menu(menu_name)
-
       content_tag :li, :class => "dropdown" do
         dropdown_link(menu_name) +
         content_tag(:ul, :class => "dropdown-menu") { yield }
