@@ -5,7 +5,7 @@ module BootstrapHelp
     include ActionView::Helpers::UrlHelper
     include ActionView::Context
 
-    def main_nav(args)
+    def main_nav(args, &block)
       brand = args.fetch(:brand, '')
       brand_path = args.fetch(:brand_path, '/')
 
@@ -14,31 +14,24 @@ module BootstrapHelp
           content_tag :div, class: 'container-fluid' do
             concat(responsive_menu_variation)
             concat(link_to(brand, brand_path, class: 'brand'))
-            if block_given?
-              concat(yield)
-            end
+            concat(capture(&block)) if block_given?
           end
         end
       end
     end
 
-    def left
-      if block_given?
-        content_tag(:div, class: 'nav') { yield }
-      end
+    def left(&block)
+      content_tag(:div, class: 'nav', &block)
     end
 
-    def right
-      if block_given?
-        content_tag(:div, class: 'nav pull-right') { yield }
-      end
+    def right(&block)
+      content_tag(:div, class: 'nav pull-right', &block)
     end
 
-    #Dropdown Menus
-    def dropdown_menu(menu_name)
+    def dropdown_menu(menu_name, &block)
       content_tag :li, :class => "dropdown" do
         dropdown_link(menu_name) +
-        content_tag(:ul, :class => "dropdown-menu") { yield }
+        content_tag(:ul, :class => "dropdown-menu", &block)
       end
     end
 
