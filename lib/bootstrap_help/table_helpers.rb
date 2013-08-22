@@ -5,11 +5,10 @@ module BootstrapHelp
     include ActionView::Helpers::UrlHelper
     include ActionView::Context
 
-
-    def table_for(collection)
+    def table_for(collection, &block)
       @columns = []
+      block.call
       content_tag :table, class: "table table-striped table-bordered" do
-        yield
         thead + tbody(collection)
       end
     end
@@ -19,6 +18,7 @@ module BootstrapHelp
       @columns << {:name => name, :value => value, :sortable => sortable, :block => block}
       nil
     end
+
     private
 
     def tbody(collection)
@@ -26,9 +26,7 @@ module BootstrapHelp
           collection.each do |item|
             concat(draw_row {
               @columns.each do |c|
-                concat(draw_column {
-                  concat(item.send(c.fetch(:value)))
-                })
+                parse_column(c, item)
               end
             })
           end
@@ -45,18 +43,26 @@ module BootstrapHelp
       end
     end
 
-    def draw_body
-      content_tag(:tbody) { yield }
+    def draw_body(&block)
+      content_tag(:tbody, &block)
     end
 
-    def draw_row
-      content_tag(:tr) { yield }
+    def draw_row(&block)
+      content_tag(:tr, &block)
     end
 
-    def draw_column
-      content_tag(:td) { yield }
+    def draw_column(&block)
+      content_tag(:td, &block)
     end
 
-
+    def parse_column(column, item)
+      attribute = item.send(column.fetch(:value))
+      if column[:block].present?
+        output = column[:block].call(attribute)
+      else
+        output = attribute
+      end
+      concat(draw_column { concat(output) })
+    end
   end
 end
