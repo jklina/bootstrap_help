@@ -9,14 +9,17 @@ module BootstrapHelp
       @buttons = []
       block.call
       content_tag :div, class: "btn-toolbar" do
-        @buttons.each do |button|
-          concat(draw_button(button[:icon_suffix], button[:options]))
+        content_tag :div, class: "btn-group" do
+          @buttons.each do |button|
+            concat(draw_button(button[:icon_suffix], button[:options]))
+          end
         end
       end
     end
 
     def button(icon_suffix, options)
       @buttons << {icon_suffix: icon_suffix, options: options}
+      nil
     end
 
     private
