@@ -41,8 +41,8 @@ The Table Helper helps you quickly build Bootstrap tables with collections of in
 
 ```haml
 = table_for(@apples) do
-  = column :color do |color|
-    - color.to_hex
+  = column "Hex Color" do |apple|
+    - apple.color.to_hex
   = column 'Type of Apple', :type
 ```
 

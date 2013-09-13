@@ -5,7 +5,7 @@ module BootstrapHelp
     include ActionView::Helpers::UrlHelper
     include ActionView::Context
 
-    def table_for(collection, &block)
+    def table_for(collection, args={}, &block)
       @columns = []
       block.call
       content_tag :table, class: "table table-striped table-bordered" do
@@ -56,11 +56,10 @@ module BootstrapHelp
     end
 
     def parse_column(column, item)
-      attribute = item.send(column.fetch(:value))
       if column[:block].present?
-        output = column[:block].call(attribute)
+        output = column[:block].call(item)
       else
-        output = attribute
+        output = item.send(column.fetch(:value))
       end
       concat(draw_column { concat(output) })
     end
