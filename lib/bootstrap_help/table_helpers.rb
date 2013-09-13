@@ -57,7 +57,7 @@ module BootstrapHelp
 
     def parse_column(column, item)
       if column[:block].present?
-       output = capture(&column[:block])
+       output = capture(item, &column[:block])
       else
         output = item.send(column.fetch(:value))
       end
