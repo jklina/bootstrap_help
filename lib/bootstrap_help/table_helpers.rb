@@ -57,11 +57,11 @@ module BootstrapHelp
 
     def parse_column(column, item)
       if column[:block].present?
-        output = column[:block].call(item)
+       output = capture(&column[:block])
       else
         output = item.send(column.fetch(:value))
       end
-      concat(draw_column { concat(output) })
+      concat(draw_column { output })
     end
   end
 end
