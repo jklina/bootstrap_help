@@ -46,6 +46,22 @@ The Table Helper helps you quickly build Bootstrap tables with collections of in
   = column 'Type of Apple', :type
 ```
 
+### Button Helper
+
+The button helper renders buttons with the proper Bootstrap markup. You can optionally add icons from the Bootstrap library that are listed [here](http://getbootstrap.com/2.3.2/base-css.html#icons "Bootstrap Icons")
+
+```haml
+= button_to "New Store", new_store_path
+= button_to "Edit Store", edit_store_path(@store), icon: "edit"
+```
+
+```haml
+= button_toolbar do
+  = button "zoom-in", store
+  = button "edit", edit_store_path(@store)
+  = button "remove-sign", store, method: :delete
+```
+
 ## Contributing
 
 1. Fork it
