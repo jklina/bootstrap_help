@@ -30,7 +30,7 @@ describe BootstrapHelp::ButtonHelpers do
     end
 
     it "returns a primary button with an icon when specified" do
-      expected_result = "<a class=\"btn btn-primary\" href=\"#\"><i class=\"icon-edit\"></i>New Store</a>"
+      expected_result = "<a class=\"btn btn-primary\" href=\"#\"><i class=\"icon-edit icon-white\"></i> New Store</a>"
       expect(helpers.button_to('New Store', '#', icon: "edit")).
         to eq(expected_result)
     end

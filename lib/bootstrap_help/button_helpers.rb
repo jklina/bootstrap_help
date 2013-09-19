@@ -29,7 +29,8 @@ module BootstrapHelp
       button_options = append_css_class("btn btn-primary", options)
       link_to url, button_options do
         if icon_suffix.present?
-          concat(content_tag :i, nil, class: "icon-#{icon_suffix}")
+          concat(content_tag :i, nil, class: "icon-#{icon_suffix} icon-white")
+          name = " #{name}"
         end
         concat(name)
       end
