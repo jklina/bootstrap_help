@@ -7,6 +7,7 @@ module BootstrapHelp
 
     def table_for(collection, args={}, &block)
       @columns = []
+      @row_decorators = args[:row_decorators]
       block.call
       content_tag :table, class: "table table-striped table-bordered" do
         thead + tbody(collection)
@@ -24,7 +25,7 @@ module BootstrapHelp
     def tbody(collection)
       draw_body do
           collection.each do |item|
-            concat(draw_row {
+            concat(draw_row(item) {
               @columns.each do |c|
                 parse_column(c, item)
               end
@@ -47,8 +48,12 @@ module BootstrapHelp
       content_tag(:tbody, &block)
     end
 
-    def draw_row(&block)
-      content_tag(:tr, &block)
+    def draw_row(item=nil, &block)
+      if item.present?
+        content_tag(:tr, class: get_row_css_classes(item), &block)
+      else
+        content_tag(:tr, &block)
+      end
     end
 
     def draw_column(&block)
@@ -57,11 +62,21 @@ module BootstrapHelp
 
     def parse_column(column, item)
       if column[:block].present?
-       output = capture(item, &column[:block])
+        output = capture(item, &column[:block])
       else
-        output = item.send(column.fetch(:value))
+        output = item.send(column.fetch(:value)).to_s
       end
       concat(draw_column { output })
+    end
+
+    def get_row_css_classes(item)
+      css_classes = []
+      if @row_decorators.present? 
+        @row_decorators.each do |css_class, method|
+          css_classes << css_class if item.send(method)
+        end
+      end
+      return css_classes
     end
   end
 end

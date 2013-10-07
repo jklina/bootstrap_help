@@ -40,7 +40,7 @@ The Nav Helper helps you quickly build a fixed navigation bar in Bootstrap. For 
 The Table Helper helps you quickly build Bootstrap tables with collections of instances. For example:
 
 ```haml
-= table_for(@apples) do
+= table_for(@apples, row_decorators: { error: :has_worm?) do
   = column "Hex Color" do |apple|
     - apple.color.to_hex
   = column 'Type of Apple', :type
